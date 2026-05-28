@@ -1,0 +1,211 @@
+/* Inspired by Genesis Lifestyle Pro (Wayback 2017) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Droid Sans', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #444;
+  background: #f5f5f5 url('/images/bg.png') repeat;
+}
+
+a {
+  color: #5e9caf;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #3d7a8c;
+  text-decoration: underline;
+}
+
+.wrap {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.site-container {
+  background: #fff;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
+}
+
+.nav-primary {
+  background: #5e9caf;
+  border-bottom: 3px solid #4a8496;
+}
+
+.menu-primary {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.menu-primary .menu-item a {
+  display: block;
+  padding: 12px 16px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.menu-primary .menu-item a:hover,
+.menu-primary .current-menu-item a {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.site-header {
+  padding: 28px 0 20px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.site-title {
+  margin: 0;
+  font-family: 'Roboto Slab', Georgia, serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+
+.site-title a {
+  color: #333;
+  text-decoration: none;
+}
+
+.site-description {
+  margin: 8px 0 0;
+  color: #777;
+  font-style: italic;
+}
+
+.content-sidebar-wrap {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 32px;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 28px 20px 40px;
+}
+
+.content {
+  min-width: 0;
+}
+
+.entry {
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #eee;
+}
+
+.entry-title {
+  font-family: 'Roboto Slab', Georgia, serif;
+  font-size: 1.75rem;
+  margin: 0 0 8px;
+  line-height: 1.25;
+}
+
+.entry-title a {
+  color: #333;
+  text-decoration: none;
+}
+
+.entry-meta {
+  font-size: 13px;
+  color: #888;
+  margin: 0 0 16px;
+}
+
+.entry-content p {
+  margin: 0 0 1em;
+}
+
+.entry-content h2 {
+  font-family: 'Roboto Slab', Georgia, serif;
+  font-size: 1.25rem;
+  margin: 1.5em 0 0.5em;
+}
+
+.entry-footer,
+.entry-categories {
+  font-size: 13px;
+  color: #888;
+  margin-top: 16px;
+}
+
+.sidebar .widget {
+  margin-bottom: 28px;
+  background: #fafafa;
+  border: 1px solid #eee;
+  padding: 16px;
+}
+
+.widget-title {
+  margin: 0 0 12px;
+  font-family: 'Roboto Slab', Georgia, serif;
+  font-size: 1rem;
+  color: #333;
+}
+
+.widget ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.widget li {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.search-form input[type='search'] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: 8px;
+  font: inherit;
+}
+
+.contact-form button {
+  background: #5e9caf;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.site-footer {
+  background: #333;
+  color: #ccc;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .content-sidebar-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-primary {
+    flex-direction: column;
+  }
+}

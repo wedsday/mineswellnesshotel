@@ -1,0 +1,103 @@
+/* Genesis / Lifestyle Pro parity tweaks for Hugo build */
+body.custom-background {
+  background-image: url('../images/bg.png');
+  background-position: left top;
+  background-repeat: repeat;
+  background-attachment: scroll;
+}
+
+.nav-primary {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.nav-primary .wrap {
+  max-width: 1140px;
+}
+
+/* Recent posts widget (from archive inline styles) */
+.rpwe-block ul {
+  list-style: none !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+.rpwe-block li {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  list-style-type: none;
+}
+
+.rpwe-block a {
+  display: inline !important;
+  text-decoration: none;
+}
+
+.rpwe-block h3 {
+  background: none !important;
+  clear: none;
+  margin: 0 !important;
+  font-weight: 400;
+  font-size: 12px !important;
+  line-height: 1.5em;
+}
+
+.rpwe-title a {
+  color: #222;
+}
+
+.rpwe-title a:hover {
+  color: #4cc4e0;
+}
+
+/* Share buttons (AddToAny-style) */
+.addtoany_share_save_container {
+  margin: 1.5em 0;
+  clear: both;
+}
+
+.a2a_kit a {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  color: #555 !important;
+  text-decoration: none !important;
+}
+
+.a2a_kit a:hover {
+  background: #4cc4e0;
+  border-color: #4cc4e0;
+  color: #fff !important;
+}
+
+.comment-respond {
+  margin-top: 2em;
+  padding-top: 1em;
+  border-top: 1px solid #eee;
+}
+
+.comment-reply-title {
+  font-family: 'Roboto Slab', Georgia, serif;
+  font-size: 1.25rem;
+}
+
+.entry-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.alignleft {
+  float: left;
+  margin: 0 1em 1em 0;
+}
+
+.alignright {
+  float: right;
+  margin: 0 0 1em 1em;
+}

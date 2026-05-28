@@ -1,0 +1,11 @@
+{{ define "main" }}
+<header class="entry-header">
+  <h1 class="entry-title">Author: {{ .Title }}</h1>
+</header>
+<div class="entry-content">
+  <p>Articles by {{ .Title }} on {{ .Site.Title }}.</p>
+</div>
+{{ range where .Site.RegularPages "Params.author" .Title }}
+  {{ partial "post-summary.html" . }}
+{{ end }}
+{{ end }}

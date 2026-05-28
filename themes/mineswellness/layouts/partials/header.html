@@ -1,0 +1,23 @@
+<nav class="nav-primary" aria-label="Main" itemscope itemtype="http://schema.org/SiteNavigationElement">
+  <div class="wrap">
+    <ul id="menu-top-menu" class="menu genesis-nav-menu menu-primary">
+      {{ range .Site.Menus.main }}
+        <li class="menu-item menu-item-type-custom menu-item-object-custom{{ if $.IsMenuCurrent "main" . }} current-menu-item current_page_item{{ end }}">
+          <a href="{{ .URL }}" itemprop="url"><span itemprop="name">{{ .Name }}</span></a>
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+</nav>
+<header class="site-header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="wrap">
+    <div class="title-area">
+      {{ if .IsHome }}
+        <h1 class="site-title" itemprop="headline"><a href="{{ "/" | relURL }}" itemprop="url">{{ .Site.Title }}</a></h1>
+      {{ else }}
+        <p class="site-title" itemprop="headline"><a href="{{ "/" | relURL }}" itemprop="url">{{ .Site.Title }}</a></p>
+      {{ end }}
+      <p class="site-description" itemprop="description">{{ .Site.Params.description }}</p>
+    </div>
+  </div>
+</header>

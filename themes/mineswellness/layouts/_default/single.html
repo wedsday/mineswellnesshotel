@@ -1,0 +1,42 @@
+{{ define "main" }}
+<article class="post type-post status-publish format-standard entry" itemscope itemtype="http://schema.org/CreativeWork">
+  <header class="entry-header">
+  {{ if eq .Section "posts" }}
+    <h1 class="entry-title" itemprop="headline">{{ .Title }}</h1>
+    <p class="entry-meta">
+      <time class="entry-time" itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
+      By <span class="entry-author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <a href="{{ "/author/admin/" | relURL }}" class="entry-author-link" itemprop="url" rel="author"><span class="entry-author-name" itemprop="name">{{ .Params.author | default "Admin" }}</span></a>
+      </span>
+      <span class="entry-comments-link"><a href="#respond">Leave a Comment</a></span>
+    </p>
+  {{ else }}
+    <h1 class="entry-title" itemprop="headline">{{ .Title }}</h1>
+  {{ end }}
+  </header>
+  <div class="entry-content" itemprop="text">
+    {{- with .Params.ogImage -}}
+    {{- if not (findRE "<img" $.Content 1) -}}
+    <p><img src="{{ . | relURL }}" alt="" class="alignright size-medium wp-post-image" loading="lazy" width="300"></p>
+    {{- end -}}
+    {{- end -}}
+    {{ .Content }}
+  </div>
+  {{ if eq .Section "posts" }}
+    {{ partial "share-buttons.html" . }}
+    <footer class="entry-footer">
+      {{ with .Params.categories }}
+        <p class="entry-categories">Filed Under:
+          {{ range $i, $c := . }}
+            {{ if $i }}, {{ end }}<a href="{{ "/category/" | relURL }}{{ $c | urlize }}/" rel="category tag">{{ $c | title }}</a>
+          {{ end }}
+        </p>
+      {{ end }}
+    </footer>
+    <section id="respond" class="comment-respond" aria-label="Comments">
+      <h3 id="reply-title" class="comment-reply-title">Leave a Reply</h3>
+      <p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked *</p>
+    </section>
+  {{ end }}
+</article>
+{{ end }}

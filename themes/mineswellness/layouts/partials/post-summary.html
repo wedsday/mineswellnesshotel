@@ -1,0 +1,22 @@
+<article class="entry post-summary">
+  <header class="entry-header">
+    <h2 class="entry-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+    <p class="entry-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      By <span class="entry-author">{{ .Params.author | default "Admin" }}</span>
+    </p>
+  </header>
+  <div class="entry-content">
+    {{ .Summary }}
+  </div>
+  <p class="read-more"><a href="{{ .Permalink }}" rel="bookmark" title="Read {{ .Title }}">Read more</a></p>
+  {{ with .Params.categories }}
+    <footer class="entry-footer">
+      <p class="entry-categories">Filed Under:
+        {{ range $i, $c := . }}
+          {{ if $i }}, {{ end }}<a href="{{ "/category/" | relURL }}{{ $c | urlize }}/">{{ $c | title }}</a>
+        {{ end }}
+      </p>
+    </footer>
+  {{ end }}
+</article>

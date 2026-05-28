@@ -1,0 +1,17 @@
+{{ define "main" }}
+  {{ if eq .Kind "taxonomy" }}
+    <header class="entry-header">
+      <h1 class="entry-title">Category: {{ .Title | title }}</h1>
+    </header>
+    {{ range .Pages.ByDate.Reverse }}
+      {{ partial "post-summary.html" . }}
+    {{ end }}
+    {{ if not .Pages }}
+      <p>No posts in this category yet.</p>
+    {{ end }}
+  {{ else }}
+    {{ range .Pages.ByDate.Reverse }}
+      {{ partial "post-summary.html" . }}
+    {{ end }}
+  {{ end }}
+{{ end }}

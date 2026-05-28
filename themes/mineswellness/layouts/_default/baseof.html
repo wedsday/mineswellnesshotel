@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  {{ partial "head.html" . }}
+</head>
+{{- $body := slice "custom-background" "header-full-width" "content-sidebar" "lifestyle-pro-blue" -}}
+{{- if .IsHome -}}
+  {{- $body = $body | append "home" "blog" -}}
+{{- else if eq .Section "posts" -}}
+  {{- $body = $body | append "single" "post-template-default" "single-post" -}}
+{{- else -}}
+  {{- $body = $body | append "page" "page-template-default" -}}
+{{- end -}}
+<body class="{{ delimit $body " " }}" itemscope itemtype="http://schema.org/WebPage">
+  <div class="site-container">
+    {{ partial "header.html" . }}
+    <div class="site-inner">
+      <div class="content-sidebar-wrap">
+        <main class="content" id="main-content" role="main">
+          {{ block "main" . }}{{ end }}
+        </main>
+        {{ partial "sidebar.html" . }}
+      </div>
+    </div>
+    {{ partial "footer.html" . }}
+  </div>
+</body>
+</html>

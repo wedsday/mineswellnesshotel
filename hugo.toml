@@ -1,0 +1,70 @@
+baseURL = 'https://www.mineswellnesshotel.com.my/'
+defaultContentLanguage = 'en'
+title = "Mine's Wellness"
+theme = 'mineswellness'
+enableRobotsTXT = true
+enableGitInfo = false
+disableHugoGeneratorInjected = true
+
+[params]
+  description = 'Blog for all travellers.'
+  author = 'Admin'
+  copyright = ''
+  archiveSource = 'https://web.archive.org/web/20170701231310/http://www.mineswellnesshotel.com.my/'
+
+[taxonomies]
+  category = 'categories'
+
+[permalinks]
+  posts = '/:slug/'
+  pages = '/:slug/'
+
+[permalinks.term]
+  categories = '/category/:slug/'
+
+[outputs]
+  home = ['HTML', 'RSS']
+  section = ['HTML', 'RSS']
+
+[sitemap]
+  changefreq = 'monthly'
+  filename = 'sitemap.xml'
+
+[menu]
+  [[menu.main]]
+    name = 'Home'
+    url = '/'
+    weight = 1
+  [[menu.main]]
+    name = 'About Us'
+    url = '/about-us/'
+    weight = 2
+  [[menu.main]]
+    name = 'Place'
+    url = '/category/place/'
+    weight = 3
+  [[menu.main]]
+    name = 'Travel Tips'
+    url = '/category/travel-tips/'
+    weight = 4
+  [[menu.main]]
+    name = 'Contact Us'
+    url = '/contact-us/'
+    weight = 5
+  [[menu.main]]
+    name = 'Ads'
+    url = '/ads/'
+    weight = 6
+  [[menu.main]]
+    name = 'Privacy Policy'
+    url = '/privacy-policy/'
+    weight = 7
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[related]
+  threshold = 80
+  includeNewer = true

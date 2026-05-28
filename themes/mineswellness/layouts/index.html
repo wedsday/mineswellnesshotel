@@ -1,0 +1,6 @@
+{{ define "main" }}
+  {{ $posts := where .Site.RegularPages "Section" "posts" }}
+  {{ range $posts.ByDate.Reverse }}
+    {{ partial "post-full.html" . }}
+  {{ end }}
+{{ end }}
