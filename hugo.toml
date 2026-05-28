@@ -1,4 +1,4 @@
-baseURL = 'https://www.mineswellnesshotel.com.my/'
+baseURL = 'https://mineswellnesshotel.com.my/'
 defaultContentLanguage = 'en'
 title = "Mine's Wellness"
 theme = 'mineswellness'

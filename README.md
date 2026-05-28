@@ -12,6 +12,20 @@ hugo build --minify
 
 Default dev server: http://localhost:1313/
 
+## Deploy to Firebase Hosting
+
+```powershell
+cd projects/mineswellnesshotel-hugo
+hugo build --minify
+firebase deploy --only hosting
+```
+
+- Firebase project: `mineswellnesshotel-828453972280`
+- Live URL (after deploy): https://mineswellnesshotel-828453972280.web.app
+- Custom domain: `mineswellnesshotel.com.my` (configure in Firebase Console → Hosting → Add custom domain, then update DNS at your registrar)
+
+First-time setup: `npm install -g firebase-tools` then `firebase login`.
+
 ## Content source
 
 - Posts extracted from Wayback `index.html` via `node scripts/extract-posts.mjs`
