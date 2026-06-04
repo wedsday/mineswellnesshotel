@@ -12,19 +12,17 @@ hugo build --minify
 
 Default dev server: http://localhost:1313/
 
-## Deploy to Firebase Hosting
+## Deploy to GitHub Pages
 
-```powershell
-cd projects/mineswellnesshotel-hugo
-hugo build --minify
-firebase deploy --only hosting
-```
+Hosting uses **GitHub Pages** with a GitHub Actions workflow (`.github/workflows/hugo.yml`). Pushes to `main` build Hugo and publish automatically.
 
-- Firebase project: `mineswellnesshotel-828453972280`
-- Live URL (after deploy): https://mineswellnesshotel-828453972280.web.app
-- Custom domain: `mineswellnesshotel.com.my` (configure in Firebase Console → Hosting → Add custom domain, then update DNS at your registrar)
+**Full setup steps:** see [DEPLOY-GITHUB-PAGES.md](./DEPLOY-GITHUB-PAGES.md)
 
-First-time setup: `npm install -g firebase-tools` then `firebase login`.
+| Item | Value |
+|------|--------|
+| GitHub repo | https://github.com/wedsday/mineswellnesshotel |
+| Default Pages URL | https://wedsday.github.io/mineswellnesshotel/ |
+| Custom domain (target) | `mineswellnesshotel.com.my` |
 
 ## Content source
 

@@ -14,7 +14,7 @@ This Hugo rebuild targets **continuity signals** Google uses when a domain comes
 | `<title>` / OG tags | Yoast SEO | `seoTitle`, `description`, `ogImage` in front matter + `partials/head.html` |
 | Schema | WebSite + articles | JSON-LD in `partials/schema-jsonld.html` |
 | Microdata | `itemscope` on nav, articles, sidebar | Same patterns in templates |
-| RSS | `/feed/` | `/index.xml` (link rel in `<head>`; add redirect to `/feed/` at host if needed) |
+| RSS | `/feed/` | `/index.xml` (link rel in `<head>`; `/feed/` redirect via `static/feed/index.html`) |
 | `robots.txt` + sitemap | Present | `static/robots.txt` + Hugo `sitemap.xml` |
 
 ## What Google will **not** treat as guaranteed “same site”
@@ -28,10 +28,10 @@ This Hugo rebuild targets **continuity signals** Google uses when a domain comes
 
 ## Recommended launch checklist
 
-1. Point DNS for `www.mineswellnesshotel.com.my` to this static host.
-2. Verify [Google Search Console](https://search.google.com/search-console) property.
-3. Submit `https://www.mineswellnesshotel.com.my/sitemap.xml`.
-4. Optional: 301 `/feed/` → `/index.xml` at CDN/host.
+1. Deploy via GitHub Pages (see [DEPLOY-GITHUB-PAGES.md](./DEPLOY-GITHUB-PAGES.md)).
+2. Point DNS for `mineswellnesshotel.com.my` to GitHub Pages (A records + optional `www` CNAME).
+3. Verify [Google Search Console](https://search.google.com/search-console) property.
+4. Submit `https://mineswellnesshotel.com.my/sitemap.xml` (or `www.` if that is primary).
 5. Optional: [Internet Archive ownership](https://archive.org) / `rel=me` if you control both.
 6. Keep content in `content/posts/` aligned with Wayback; run `node scripts/extract-seo.mjs` after edits.
 
