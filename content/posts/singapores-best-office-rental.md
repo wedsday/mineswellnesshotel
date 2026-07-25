@@ -43,9 +43,6 @@ Don't hurry when you are looking for an office to rent. Remember that you will b
 
 There is no better place to set up your shop and establish your business. Do not settle for less and start your business in a place that does not meet high standards.
 
-
-
-
-
+**See also:** Considering a longer stay across the border? Our overview of [becoming a Malaysian expat](/can-get-becoming-malaysian-expat/) covers culture, food, and day-to-day life.
 
 

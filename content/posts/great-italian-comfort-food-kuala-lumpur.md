@@ -35,9 +35,7 @@ The next time that you are in Kuala Lumpur, or you live here and just want to vi
 
 You can find all this information out at their website which is sassoross.com.my. Take our advice and be sure to visit one of the [best Italian restaurant in KL](http://www.sassorosso.com.my/).
 
-
-
-
+**See also:** If you are planning more days in the capital, our notes on [becoming a Malaysian expat](/can-get-becoming-malaysian-expat/) and a day trip to [Kuala Gandah Elephant Sanctuary](/information-kuala-gandah-elephant-sanctuary/) may help.
 
 
 

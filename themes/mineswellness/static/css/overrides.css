@@ -76,15 +76,50 @@ body.custom-background {
   color: #fff !important;
 }
 
-.comment-respond {
-  margin-top: 2em;
-  padding-top: 1em;
+.related-posts {
+  margin: 2em 0;
+  padding: 1em 0;
   border-top: 1px solid #eee;
 }
 
-.comment-reply-title {
+.related-posts-title {
   font-family: 'Roboto Slab', Georgia, serif;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
+  margin: 0 0 0.75em;
+}
+
+.related-posts ul {
+  margin: 0;
+  padding-left: 1.2em;
+}
+
+.related-posts li {
+  margin-bottom: 0.4em;
+}
+
+.footer-links {
+  margin: 0.5em 0 0;
+  font-size: 13px;
+}
+
+.footer-links a {
+  color: #ccc;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.footer-disclaimer {
+  margin: 0.75em auto 0;
+  max-width: 720px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #999;
+}
+
+.author-bio {
+  margin-bottom: 2em;
 }
 
 .entry-content img {

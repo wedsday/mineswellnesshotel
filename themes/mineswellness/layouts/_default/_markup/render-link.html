@@ -1,0 +1,14 @@
+{{- $dest := .Destination -}}
+{{- $u := urls.Parse $dest -}}
+{{- $base := urls.Parse site.BaseURL -}}
+{{- $isHttp := or (eq $u.Scheme "http") (eq $u.Scheme "https") -}}
+{{- $isRemote := and $isHttp (ne $u.Host "") (ne $u.Host $base.Host) -}}
+{{- $rel := "" -}}
+{{- if $isRemote -}}
+  {{- if (index hugo.Data "pbn").nofollowExternal -}}
+    {{- $rel = "nofollow noopener noreferrer" -}}
+  {{- else -}}
+    {{- $rel = "noopener noreferrer" -}}
+  {{- end -}}
+{{- end -}}
+<a href="{{ $dest | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ with $rel }} rel="{{ . }}"{{ end }}{{ if $isRemote }} target="_blank"{{ end }}>{{ .Text | safeHTML }}</a>

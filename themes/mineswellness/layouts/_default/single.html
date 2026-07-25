@@ -8,7 +8,6 @@
       By <span class="entry-author" itemprop="author" itemscope itemtype="http://schema.org/Person">
         <a href="{{ "/author/admin/" | relURL }}" class="entry-author-link" itemprop="url" rel="author"><span class="entry-author-name" itemprop="name">{{ .Params.author | default "Admin" }}</span></a>
       </span>
-      <span class="entry-comments-link"><a href="#respond">Leave a Comment</a></span>
     </p>
   {{ else }}
     <h1 class="entry-title" itemprop="headline">{{ .Title }}</h1>
@@ -24,6 +23,7 @@
   </div>
   {{ if eq .Section "posts" }}
     {{ partial "share-buttons.html" . }}
+    {{ partial "related-posts.html" . }}
     <footer class="entry-footer">
       {{ with .Params.categories }}
         <p class="entry-categories">Filed Under:
@@ -33,10 +33,6 @@
         </p>
       {{ end }}
     </footer>
-    <section id="respond" class="comment-respond" aria-label="Comments">
-      <h3 id="reply-title" class="comment-reply-title">Leave a Reply</h3>
-      <p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked *</p>
-    </section>
   {{ end }}
 </article>
 {{ end }}

@@ -4,7 +4,7 @@ title = "Mine's Wellness"
 theme = 'mineswellness'
 enableRobotsTXT = true
 enableGitInfo = false
-disableHugoGeneratorInjected = true
+disableHugoGeneratorInject = true
 
 [params]
   description = 'Blog for all travellers.'
@@ -48,16 +48,16 @@ disableHugoGeneratorInjected = true
     url = '/category/travel-tips/'
     weight = 4
   [[menu.main]]
+    name = 'FAQ'
+    url = '/faq/'
+    weight = 5
+  [[menu.main]]
     name = 'Contact Us'
     url = '/contact-us/'
-    weight = 5
+    weight = 6
   [[menu.main]]
     name = 'Ads'
     url = '/ads/'
-    weight = 6
-  [[menu.main]]
-    name = 'Privacy Policy'
-    url = '/privacy-policy/'
     weight = 7
 
 [markup]
@@ -66,5 +66,12 @@ disableHugoGeneratorInjected = true
       unsafe = true
 
 [related]
-  threshold = 80
+  threshold = 70
   includeNewer = true
+  toLower = true
+  [[related.indices]]
+    name = 'categories'
+    weight = 100
+  [[related.indices]]
+    name = 'date'
+    weight = 10

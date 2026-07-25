@@ -1,40 +1,64 @@
-# SEO parity with the 2017 original site
+# SEO notes — mineswellnesshotel.com.my (PBN)
 
-This Hugo rebuild targets **continuity signals** Google uses when a domain comes back or is recreated: same URLs, same text, same titles/descriptions, and similar HTML structure.
+## Positioning
 
-## What we matched
+Informational Malaysia / regional travel blog: **destination guides + practical tips**.  
+Not a hotel booking engine. No packages sold on this site.
 
-| Signal | Original (Wayback) | This build |
-|--------|-------------------|------------|
-| Domain | `www.mineswellnesshotel.com.my` | `baseURL` in `hugo.toml` |
-| Theme / layout | Genesis Lifestyle Pro Blue | Archived `lifestyle-pro.css` + overrides |
-| Post URLs | `/{slug}/` | `[permalinks] posts = '/:slug/'` |
-| Categories | `/category/place/` etc. | `[permalinks.term] categories` |
-| Static pages | `/about-us/`, `/contact-us/`, … | Same slugs in `content/` |
-| `<title>` / OG tags | Yoast SEO | `seoTitle`, `description`, `ogImage` in front matter + `partials/head.html` |
-| Schema | WebSite + articles | JSON-LD in `partials/schema-jsonld.html` |
-| Microdata | `itemscope` on nav, articles, sidebar | Same patterns in templates |
-| RSS | `/feed/` | `/index.xml` (link rel in `<head>`; `/feed/` redirect via `static/feed/index.html`) |
-| `robots.txt` + sitemap | Present | `static/robots.txt` + Hugo `sitemap.xml` |
+Archive continuity (2017 Wayback) supports relaunch signals; ongoing value comes from unique guides and clean technical SEO.
 
-## What Google will **not** treat as guaranteed “same site”
+## Indexable surface
 
-- **Hosting/IP/CDN** — new infrastructure is expected.
-- **WordPress fingerprints** — generator meta, `wp-content` URLs, and plugin assets are gone (good for security; neutral for identity).
-- **Comments & engagement** — original had comment forms; static rebuild has no comment database.
-- **Backlinks** — unchanged; still point to old URLs if paths match.
-- **Historical Search Console** — reclaim the property and submit the sitemap after DNS points here.
-- **Parked domain gap** — if the live domain showed Exabytes parking for years, recovery is a **migration/relaunch**, not an automatic handoff.
+| Area | URLs |
+|------|------|
+| Home | `/` |
+| Core pages | `/about-us/`, `/contact-us/`, `/ads/` |
+| Trust / legal | `/privacy-policy/`, `/terms/`, `/faq/` |
+| Categories | `/category/place/`, `/category/travel-tips/` |
+| Posts | `/{slug}/` (6 archived + future guides) |
+| Author | `/author/admin/` |
+| HTML sitemap | `/sitemap/` |
+| XML sitemap | `/sitemap.xml` |
+| RSS | `/index.xml` (+ `/feed/` shim) |
 
-## Recommended launch checklist
+## Schema (`@graph`)
 
-1. Deploy via GitHub Pages (see [DEPLOY-GITHUB-PAGES.md](./DEPLOY-GITHUB-PAGES.md)).
-2. Point DNS for `mineswellnesshotel.com.my` to GitHub Pages (A records + optional `www` CNAME).
-3. Verify [Google Search Console](https://search.google.com/search-console) property.
-4. Submit `https://mineswellnesshotel.com.my/sitemap.xml` (or `www.` if that is primary).
-5. Optional: [Internet Archive ownership](https://archive.org) / `rel=me` if you control both.
-6. Keep content in `content/posts/` aligned with Wayback; run `node scripts/extract-seo.mjs` after edits.
+- `Organization` + `WebSite` (home) — **no** fake `SearchAction`
+- Posts: `BlogPosting` + `BreadcrumbList` + `Person` author
+- Static pages: `WebPage` + breadcrumbs
+- FAQ: `FAQPage`
+- Publisher `@id` stable: `{baseURL}#organization`
 
-## Honest expectation
+## PBN controls
 
-Matching URLs + content + metadata gives the best chance Google treats this as the **same property revived**. It is not a guarantee—Google also uses signals outside the HTML. Visual similarity (original CSS) supports user trust and lower bounce rates, which indirectly helps SEO.
+`data/pbn.json` — money site URL (empty until ready), `nofollowExternal`, `maxOutboundLinksPerPage`, contact email.  
+Markdown outbound links get `rel` via `render-link.html`. Keep commercial outbound sparse and contextual. No related-sites footer farm.
+
+## Host / canonical
+
+- Primary: `https://mineswellnesshotel.com.my/` (`hugo.toml` + `CNAME`)
+- Align DNS so `www` redirects to apex
+- `robots.txt` Sitemap URL must match the primary host
+
+## SpamBrain / quality
+
+- Prefer unique guide copy over more Wayback HTML
+- No dead `action="#"` forms; contact uses `mailto:`
+- No fake comment backend UI
+- No inventing empty taxonomies (e.g. Review)
+- Publish slowly (1–2 guides/month) after go-live
+- Vary template details vs other PBN1 sites over time
+- Submit sitemap in Search Console after deploy
+
+## Launch checklist
+
+1. Deploy via GitHub Pages (see [DEPLOY-GITHUB-PAGES.md](./DEPLOY-GITHUB-PAGES.md))
+2. Attach custom domain `mineswellnesshotel.com.my` (+ `www` → apex redirect)
+3. Verify property in Google Search Console
+4. Submit `https://mineswellnesshotel.com.my/sitemap.xml`
+5. Rich Results test on home + one blog post + FAQ
+6. Mobile check on `/`, one post, `/faq/`
+
+## Last updated
+
+2026-07-25

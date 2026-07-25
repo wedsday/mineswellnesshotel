@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.mineswellnesshotel.com.my/sitemap.xml
+Sitemap: https://mineswellnesshotel.com.my/sitemap.xml

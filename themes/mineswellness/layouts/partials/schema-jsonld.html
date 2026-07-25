@@ -1,35 +1,124 @@
 {{- $siteTitle := "Mine's Wellness" -}}
-{{- if .IsHome -}}
+{{- $base := .Site.BaseURL -}}
+{{- $orgId := printf "%s#organization" $base -}}
+{{- $websiteId := printf "%s#website" $base -}}
+{{- $pageId := .Permalink | absURL -}}
+{{- $description := .Params.description | default .Site.Params.description -}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": "{{ .Site.BaseURL }}#website",
-  "url": {{ .Site.BaseURL | jsonify }},
-  "name": {{ $siteTitle | jsonify }},
-  "description": {{ .Site.Params.description | jsonify }},
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": {{ printf "%s?s={search_term_string}" .Site.BaseURL | jsonify }},
-    "query-input": "required name=search_term_string"
-  }
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": {{ $orgId | jsonify }},
+      "name": {{ $siteTitle | jsonify }},
+      "url": {{ $base | jsonify }},
+      "description": {{ ((index hugo.Data "pbn").disclaimer | default .Site.Params.description) | jsonify }}
+    },
+    {
+      "@type": "WebSite",
+      "@id": {{ $websiteId | jsonify }},
+      "url": {{ $base | jsonify }},
+      "name": {{ $siteTitle | jsonify }},
+      "description": {{ .Site.Params.description | jsonify }},
+      "publisher": { "@id": {{ $orgId | jsonify }} },
+      "inLanguage": "en-MY"
+    }
+    {{- if .IsHome -}}
+    {{- else if eq .Kind "term" -}}
+    ,{
+      "@type": "CollectionPage",
+      "@id": {{ $pageId | jsonify }},
+      "url": {{ $pageId | jsonify }},
+      "name": {{ printf "Category: %s" .Title | jsonify }},
+      "isPartOf": { "@id": {{ $websiteId | jsonify }} },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ $base | jsonify }} },
+          { "@type": "ListItem", "position": 2, "name": {{ .Title | title | jsonify }}, "item": {{ $pageId | jsonify }} }
+        ]
+      }
+    }
+    {{- else if and (eq .Section "posts") (eq .Kind "page") -}}
+    ,{
+      "@type": "BlogPosting",
+      "@id": {{ printf "%s#article" $pageId | jsonify }},
+      "headline": {{ .Title | jsonify }},
+      "description": {{ (.Params.description | default .Summary) | plainify | jsonify }},
+      "datePublished": {{ .Date.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
+      "dateModified": {{ (.Lastmod | default .Date).Format "2006-01-02T15:04:05Z07:00" | jsonify }},
+      "author": {
+        "@type": "Person",
+        "name": {{ (.Params.author | default "Admin") | jsonify }},
+        "url": {{ "/author/admin/" | absURL | jsonify }}
+      },
+      "publisher": { "@id": {{ $orgId | jsonify }} },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": {{ $pageId | jsonify }} },
+      "isPartOf": { "@id": {{ $websiteId | jsonify }} }
+      {{- with .Params.ogImage -}}
+      ,"image": {{ . | absURL | jsonify }}
+      {{- end -}}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": {{ printf "%s#breadcrumb" $pageId | jsonify }},
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ $base | jsonify }} }
+        {{- with .Params.categories -}}
+        ,{ "@type": "ListItem", "position": 2, "name": {{ (index . 0 | title) | jsonify }}, "item": {{ printf "%scategory/%s/" $base (index . 0 | urlize) | jsonify }} }
+        ,{ "@type": "ListItem", "position": 3, "name": {{ $.Title | jsonify }}, "item": {{ $pageId | jsonify }} }
+        {{- else -}}
+        ,{ "@type": "ListItem", "position": 2, "name": {{ $.Title | jsonify }}, "item": {{ $pageId | jsonify }} }
+        {{- end -}}
+      ]
+    }
+    {{- else if eq .Params.layout "faq" -}}
+    ,{
+      "@type": "FAQPage",
+      "@id": {{ $pageId | jsonify }},
+      "url": {{ $pageId | jsonify }},
+      "name": {{ .Title | jsonify }},
+      "description": {{ $description | jsonify }},
+      "isPartOf": { "@id": {{ $websiteId | jsonify }} },
+      "mainEntity": [
+        {{- range $i, $faq := .Params.faqs -}}
+        {{- if $i }},{{ end -}}
+        {
+          "@type": "Question",
+          "name": {{ $faq.question | jsonify }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ $faq.answer | jsonify }}
+          }
+        }
+        {{- end -}}
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ $base | jsonify }} },
+        { "@type": "ListItem", "position": 2, "name": {{ .Title | jsonify }}, "item": {{ $pageId | jsonify }} }
+      ]
+    }
+    {{- else if not .IsHome -}}
+    ,{
+      "@type": "WebPage",
+      "@id": {{ $pageId | jsonify }},
+      "url": {{ $pageId | jsonify }},
+      "name": {{ .Title | jsonify }},
+      "description": {{ $description | jsonify }},
+      "isPartOf": { "@id": {{ $websiteId | jsonify }} },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ $base | jsonify }} },
+          { "@type": "ListItem", "position": 2, "name": {{ .Title | jsonify }}, "item": {{ $pageId | jsonify }} }
+        ]
+      }
+    }
+    {{- end -}}
+  ]
 }
 </script>
-{{- else if eq .Section "posts" -}}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": {{ .Title | jsonify }},
-  "description": {{ (.Params.description | default .Summary) | jsonify }},
-  "datePublished": {{ .Date.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
-  "dateModified": {{ (.Lastmod | default .Date).Format "2006-01-02T15:04:05Z07:00" | jsonify }},
-  "author": { "@type": "Person", "name": {{ (.Params.author | default "Admin") | jsonify }} },
-  "publisher": { "@type": "Organization", "name": {{ $siteTitle | jsonify }} },
-  "mainEntityOfPage": { "@type": "WebPage", "@id": {{ .Permalink | absURL | jsonify }} }
-  {{- with .Params.ogImage -}}
-  ,"image": {{ . | absURL | jsonify }}
-  {{- end -}}
-}
-</script>
-{{- end -}}

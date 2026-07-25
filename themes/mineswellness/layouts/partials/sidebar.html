@@ -1,19 +1,9 @@
 <aside class="sidebar sidebar-primary widget-area" role="complementary" aria-label="Primary Sidebar" itemscope itemtype="http://schema.org/WPSideBar">
-  <section id="search-2" class="widget widget_search">
-    <div class="widget-wrap">
-      <form class="search-form" method="get" action="{{ "/" | relURL }}" role="search" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
-        <meta itemprop="target" content="{{ "/" | absURL }}?s={s}">
-        <input itemprop="query-input" type="search" name="s" placeholder="Search this website …" aria-label="Search">
-        <input type="submit" value="Search">
-      </form>
-    </div>
-  </section>
-
   <section id="text-2" class="widget widget_text">
     <div class="widget-wrap">
       <h4 class="widget-title widgettitle">Welcome</h4>
       <div class="textwidget">
-        <p>Welcome to Mine's Wellness a blog for explorers like us and for those who wants to travel, but still needs some advices. We are a group of friends that shares the same passion and interest, to travel and explore places we haven't been on, and even revisit places we already explored. You can expect our articles to be extensive when it comes to experiences, which can be more entertaining and the same time, educational for you. Find out <a href="{{ "/about-us/" | relURL }}">more</a>.</p>
+        <p>Welcome to Mine's Wellness, a blog for explorers and travellers who want practical advice. We share experiences from places across Malaysia and beyond. Find out <a href="{{ "/about-us/" | relURL }}">more</a>, or browse the <a href="{{ "/faq/" | relURL }}">FAQ</a>.</p>
       </div>
     </div>
   </section>
@@ -37,9 +27,7 @@
     <div class="widget-wrap">
       <h4 class="widget-title widgettitle">Ad Sponsors</h4>
       <div class="textwidget">
-        <a href="https://www.cheaptickets.com/" rel="nofollow noreferrer" target="_blank">
-          <img src="{{ "images/ad-sponsor.jpg" | relURL }}" alt="410e4c73f0404f8f0850415cf8787fc4" width="300" height="250" class="alignright size-full wp-image-91" loading="lazy">
-        </a>
+        <p>Limited sidebar sponsorship space is available. <a href="{{ "/ads/" | relURL }}">Enquire about advertising</a>.</p>
       </div>
     </div>
   </section>
@@ -49,8 +37,12 @@
       <h4 class="widget-title widgettitle">Resources</h4>
       <div class="menu-resource-links-container">
         <ul id="menu-resource-links" class="menu">
-          <li class="menu-item"><a href="https://www.tripadvisor.com/" rel="nofollow noreferrer" target="_blank" itemprop="url">Tripadvisor.com</a></li>
-          <li class="menu-item"><a href="http://www.travelandleisure.com/" rel="nofollow noreferrer" target="_blank" itemprop="url">Travel + Leisure – Travel Tips, Guides, News &amp; Information</a></li>
+          {{- $rel := "noopener noreferrer" -}}
+          {{- if (index hugo.Data "pbn").nofollowExternal -}}
+            {{- $rel = "nofollow noopener noreferrer" -}}
+          {{- end -}}
+          <li class="menu-item"><a href="https://www.tripadvisor.com/" rel="{{ $rel }}" target="_blank">Tripadvisor.com</a></li>
+          <li class="menu-item"><a href="https://www.travelandleisure.com/" rel="{{ $rel }}" target="_blank">Travel + Leisure</a></li>
         </ul>
       </div>
     </div>

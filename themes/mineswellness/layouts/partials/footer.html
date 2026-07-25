@@ -1,5 +1,14 @@
 <footer class="site-footer" itemscope itemtype="http://schema.org/WPFooter">
   <div class="wrap">
-    <p>Copyright © {{ with .Site.Copyright }}{{ . }}{{ else }}{{ now.Year }}{{ end }}</p>
+    <p>Copyright © {{ now.Year }} {{ .Site.Title }}</p>
+    <p class="footer-links">
+      <a href="{{ "/about-us/" | relURL }}">About</a>
+      · <a href="{{ "/faq/" | relURL }}">FAQ</a>
+      · <a href="{{ "/contact-us/" | relURL }}">Contact</a>
+      · <a href="{{ "/privacy-policy/" | relURL }}">Privacy</a>
+      · <a href="{{ "/terms/" | relURL }}">Terms</a>
+      · <a href="{{ "/sitemap/" | relURL }}">Sitemap</a>
+    </p>
+    <p class="footer-disclaimer">{{ (index hugo.Data "pbn").disclaimer }}</p>
   </div>
 </footer>

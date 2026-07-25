@@ -1,0 +1,32 @@
+{{ define "main" }}
+<article class="page type-page status-publish entry">
+  <header class="entry-header">
+    <h1 class="entry-title">{{ .Title }}</h1>
+  </header>
+  <div class="entry-content">
+    <h2>Pages</h2>
+    <ul>
+      <li><a href="{{ "/" | relURL }}">Home</a></li>
+      {{ range where .Site.RegularPages "Section" "ne" "posts" }}
+        {{ if and (ne .Layout "author") (ne .RelPermalink "/sitemap/") }}
+          <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        {{ end }}
+      {{ end }}
+    </ul>
+
+    <h2>Categories</h2>
+    <ul>
+      {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+        <li><a href="{{ "/category/" | relURL }}{{ $name | urlize }}/">{{ $name | title }}</a> ({{ len $taxonomy }})</li>
+      {{ end }}
+    </ul>
+
+    <h2>Articles</h2>
+    <ul>
+      {{ range where .Site.RegularPages "Section" "posts" }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
+</article>
+{{ end }}

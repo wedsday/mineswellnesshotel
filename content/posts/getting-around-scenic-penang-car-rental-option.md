@@ -25,9 +25,7 @@ Penang is fabulous for those who want to dip their toes into the Southeast Asian
 
 Ready to rent your car? Visit J.C. RENT-A-CAR PENANG located at No. 26 Solok Rajawali 1,, Ideal Haus @ One Residence, 11900 Bayan Lepas, Pulau Pinang, Malaysia. Call them at +604-618 0242 if you have any questions.
 
-
-
-
+**See also:** For another Malaysian island trip, see [why choose Langkawi airport car rental](/choose-langkawi-airport-car-rental/).
 
 
 

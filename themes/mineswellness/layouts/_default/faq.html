@@ -1,0 +1,17 @@
+{{ define "main" }}
+<article class="page type-page status-publish entry" itemscope itemtype="http://schema.org/WebPage">
+  <header class="entry-header">
+    <h1 class="entry-title" itemprop="headline">{{ .Title }}</h1>
+  </header>
+  <div class="entry-content" itemprop="text">
+    {{ .Content }}
+    {{ with .Params.faqs }}
+      {{ range . }}
+        <h2>{{ .question }}</h2>
+        <p>{{ .answer }}</p>
+      {{ end }}
+    {{ end }}
+    <p>Still need help? Visit <a href="{{ "/contact-us/" | relURL }}">Contact Us</a>.</p>
+  </div>
+</article>
+{{ end }}

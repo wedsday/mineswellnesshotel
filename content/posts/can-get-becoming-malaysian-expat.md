@@ -25,6 +25,8 @@ In Malaysia, specifically Kuala Lumpur, due to modernization, its building is de
 
 Being a Malaysian Expat sure has some amazing benefits to it because you get to enjoy a whole new different culture and tradition and at the same time the people in Malaysia are nice, hospitable and they don’t think much of cultural difference or rather they accept diversity. So when you try to be a Malaysian Expat, you bet you can enjoy it, especially since there are some parts of Malaysia that have so many trees and beaches. Read on this [blog](http://www.klexpatmalaysia.com/) to find out more about it.
 
+**See also:** For weekend ideas from KL, try [Italian comfort food in Kuala Lumpur](/great-italian-comfort-food-kuala-lumpur/) or a visit to [Kuala Gandah Elephant Sanctuary](/information-kuala-gandah-elephant-sanctuary/).
+
 
 
 

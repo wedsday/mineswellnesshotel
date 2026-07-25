@@ -30,15 +30,22 @@ Hosting uses **GitHub Pages** with a GitHub Actions workflow (`.github/workflows
 - Pages: About Us, Contact Us, Ads, Privacy Policy (from Wayback HTML)
 - Raw captures in `_archive-html/` (optional, not deployed)
 
+## PBN / SEO
+
+See `PROJECT.md`, `SEO-NOTES.md`, and `data/pbn.json` for positioning, schema, and outbound-link controls.
+
 ## Routes (match original WordPress)
 
 | URL | Content |
 |-----|---------|
 | `/` | All posts (full text, like 2017 home) |
 | `/about-us/` | About page |
-| `/contact-us/` | Contact form (static UI) |
+| `/contact-us/` | Contact (mailto) |
+| `/faq/` | FAQ + FAQPage schema |
+| `/terms/` | Terms of use |
 | `/ads/` | Advertising info |
 | `/privacy-policy/` | Privacy policy |
+| `/sitemap/` | HTML sitemap |
 | `/category/place/` | Place category |
 | `/category/travel-tips/` | Travel tips category |
 | `/:slug/` | Individual blog posts |
