@@ -1,7 +1,7 @@
 {
   "niche": "Malaysia travel information and destination guides",
-  "moneySiteUrl": "",
-  "nofollowExternal": true,
+  "moneySiteUrl": "https://55bmwasia.com/",
+  "nofollowExternal": false,
   "enableRelatedSites": false,
   "relatedSites": [],
   "maxOutboundLinksPerPage": 2,

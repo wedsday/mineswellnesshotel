@@ -49,7 +49,17 @@
 <link rel="dns-prefetch" href="//fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Roboto+Slab:400,300,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ "css/lifestyle-pro.css" | relURL }}">
-<link rel="stylesheet" href="{{ "css/overrides.css" | relURL }}">
+<link rel="stylesheet" href="{{ "css/overrides.css" | relURL }}?v=nav-active-1">
+<style>
+  /* Current primary-nav page indicator */
+  .nav-primary .menu-primary > .current-menu-item > a,
+  .lifestyle-pro-blue .nav-primary .menu-primary > .current-menu-item > a {
+    color: #222 !important;
+    font-weight: 700 !important;
+    background-color: #e8f8fc !important;
+    box-shadow: inset 0 -3px 0 #4cc4e0;
+  }
+</style>
 <link rel="icon" href="{{ "favicon.ico" | relURL }}">
 {{ with .OutputFormats.Get "rss" -}}
 <link rel="alternate" type="application/rss+xml" title="Mine's Wellness » Feed" href="{{ .Permalink }}">

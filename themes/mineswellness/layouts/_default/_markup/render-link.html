@@ -4,8 +4,17 @@
 {{- $isHttp := or (eq $u.Scheme "http") (eq $u.Scheme "https") -}}
 {{- $isRemote := and $isHttp (ne $u.Host "") (ne $u.Host $base.Host) -}}
 {{- $rel := "" -}}
+{{- $host := replaceRE `^www\.` "" (lower $u.Host) -}}
+{{- $moneyHost := "" -}}
+{{- with (index hugo.Data "pbn").moneySiteUrl -}}
+  {{- $moneyHost = replaceRE `^www\.` "" (lower (urls.Parse .).Host) -}}
+{{- end -}}
+{{- $isCasinoMoney := or (eq $host "55bmwasia.com") (strings.HasSuffix $host ".55bmwasia.com") -}}
+{{- if and $moneyHost (or (eq $host $moneyHost) (strings.HasSuffix $host (printf ".%s" $moneyHost))) -}}
+  {{- $isCasinoMoney = true -}}
+{{- end -}}
 {{- if $isRemote -}}
-  {{- if (index hugo.Data "pbn").nofollowExternal -}}
+  {{- if and (index hugo.Data "pbn").nofollowExternal (not $isCasinoMoney) -}}
     {{- $rel = "nofollow noopener noreferrer" -}}
   {{- else -}}
     {{- $rel = "noopener noreferrer" -}}

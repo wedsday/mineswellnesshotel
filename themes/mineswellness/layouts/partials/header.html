@@ -2,8 +2,25 @@
   <div class="wrap">
     <ul id="menu-top-menu" class="menu genesis-nav-menu menu-primary">
       {{ range .Site.Menus.main }}
-        <li class="menu-item menu-item-type-custom menu-item-object-custom{{ if $.IsMenuCurrent "main" . }} current-menu-item current_page_item{{ end }}">
-          <a href="{{ .URL }}" itemprop="url"><span itemprop="name">{{ .Name }}</span></a>
+        {{ $active := false }}
+        {{ $menuPath := .URL }}
+        {{ if not (hasPrefix $menuPath "http") }}
+          {{ if not (hasPrefix $menuPath "/") }}{{ $menuPath = printf "/%s" $menuPath }}{{ end }}
+          {{ if and (ne $menuPath "/") (not (hasSuffix $menuPath "/")) }}{{ $menuPath = printf "%s/" $menuPath }}{{ end }}
+        {{ end }}
+        {{ if or (eq .URL "/") (eq $menuPath "/") }}
+          {{ $active = $.IsHome }}
+        {{ else if $.IsMenuCurrent "main" . }}
+          {{ $active = true }}
+        {{ else if $.HasMenuCurrent "main" . }}
+          {{ $active = true }}
+        {{ else if eq $.RelPermalink $menuPath }}
+          {{ $active = true }}
+        {{ else if and (ne $menuPath "/") (hasPrefix $.RelPermalink $menuPath) }}
+          {{ $active = true }}
+        {{ end }}
+        <li class="menu-item menu-item-type-custom menu-item-object-custom{{ if $active }} current-menu-item current_page_item{{ end }}">
+          <a href="{{ .URL }}" itemprop="url"{{ if $active }} aria-current="page"{{ end }}><span itemprop="name">{{ .Name }}</span></a>
         </li>
       {{ end }}
     </ul>

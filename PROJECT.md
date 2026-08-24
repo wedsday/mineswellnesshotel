@@ -75,7 +75,7 @@ hugo build --minify
 
 ## Open items / backlog
 
-- Set real `moneySiteUrl` in `data/pbn.json` when ready (keep nofollow on).
+- `moneySiteUrl` set to `https://55bmwasia.com/` (dofollow via render-link carve-out).
 - Publish 1–2 new Malaysia travel guides/month with in-body internal links.
 - Optional: restore licensed post images / fill remaining `ogImage` fields.
 - Verify GSC property + submit sitemap after DNS is live.
